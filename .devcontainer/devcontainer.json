@@ -1,0 +1,22 @@
+{
+  "name": "OSN Lab Hemat Storage",
+  "image": "ghcr.io/open-webui/open-webui:ollama",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+  "runArgs": [
+    "--device=/dev/net/tun",
+    "--device=/dev/kvm",
+    "--cap-add=NET_ADMIN",
+    "--cap-add=NET_RAW",
+    "--add-host=host.docker.internal:host-gateway"
+  ],
+  "remoteUser": "root",
+  "postCreateCommand": "sudo chmod 666 /dev/kvm && apt-get update && apt-get install -y curl qemu-utils qemu-kvm qemu-system-x86 swtpm && curl -fsSL https://tailscale.com/install.sh | sh",
+  "postStartCommand": "chmod 666 /dev/kvm && echo Done!",
+  "forwardPorts": [3000, 11434],
+  "portsAttributes": {
+    "3000": { "label": "Open WebUI", "onAutoForward": "openBrowser" },
+    "11434": { "label": "Ollama API", "onAutoForward": "silent" }
+  }
+}
