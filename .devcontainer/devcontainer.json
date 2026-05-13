@@ -1,9 +1,6 @@
 {
   "name": "OSN Lab Hemat Storage",
-  "image": "ghcr.io/open-webui/open-webui:ollama",
-  "features": {
-    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
-  },
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04"
   "runArgs": [
     "--device=/dev/net/tun",
     "--device=/dev/kvm",
