@@ -10,7 +10,7 @@
   ],
   "remoteUser": "root",
   "postCreateCommand": "sudo chmod 666 /dev/kvm && apt-get update && apt-get install -y curl qemu-utils qemu-kvm qemu-system-x86 && curl -fsSL https://tailscale.com/install.sh | sh",
-  "postStartCommand": "chmod 666 /dev/kvm && echo Done!",
+  "postStartCommand": "sudo chmod 666 /dev/kvm && echo Done!",
   "forwardPorts": [3000, 11434],
   "portsAttributes": {
     "3000": { "label": "Open WebUI", "onAutoForward": "openBrowser" },
